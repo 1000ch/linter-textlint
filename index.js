@@ -2,7 +2,6 @@
 
 import fs from 'fs';
 import path from 'path';
-import listy from 'listy';
 import helper from 'atom-linter';
 import { Range } from 'atom';
 import { TextLintEngine } from 'textlint';
@@ -18,12 +17,7 @@ export const activate = () => {
 export const provideLinter = () => {
 
   const directory = atom.project.getPaths().shift();
-  const pluginPaths = listy.sync(path.join(directory, './node_modules/textlint-rule-*'));
-  pluginPaths.forEach(pluginPath => {
-    //let plugin = require(pluginPath);
-    //var definedRuleName = ruleName.replace(/^textlint\-rule\-/, "");
-    //ruleManager.defineRule(definedRuleName, plugin);
-  });
+  const pluginPath = path.join(directory, './node_modules/');
 
   return {
     grammarScopes: ['source.gfm', 'source.pfm', 'source.txt'],
@@ -41,6 +35,11 @@ export const provideLinter = () => {
       }
 
       const textlint = new TextLintEngine(textlintConfig);
+
+      textlintConfig.rules.forEach(ruleName => {
+        textlint.loadRule(ruleName, pluginPath);
+      });
+
       const items = textlint.executeOnText(text)
         .filter(result => result.messages.length)
         .map(result => result.messages.shift());
