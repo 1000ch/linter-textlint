@@ -2,6 +2,7 @@
 
 import fs from 'fs';
 import path from 'path';
+import listy from 'listy';
 import helper from 'atom-linter';
 import { Range } from 'atom';
 import { TextLintEngine } from 'textlint';
@@ -15,6 +16,15 @@ export const activate = () => {
 };
 
 export const provideLinter = () => {
+
+  const directory = atom.project.getPaths().shift();
+  const pluginPaths = listy.sync(path.join(directory, './node_modules/textlint-rule-*'));
+  pluginPaths.forEach(pluginPath => {
+    //let plugin = require(pluginPath);
+    //var definedRuleName = ruleName.replace(/^textlint\-rule\-/, "");
+    //ruleManager.defineRule(definedRuleName, plugin);
+  });
+
   return {
     grammarScopes: ['source.gfm', 'source.pfm', 'source.txt'],
     scope: 'file',
@@ -26,18 +36,8 @@ export const provideLinter = () => {
       let textlintConfig = {};
 
       let configFile = helper.findFile(filePath, configFiles);
-
       if (configFile) {
         textlintConfig = JSON.parse(fs.readFileSync(configFile));
-      }
-
-      const projectDirectory = atom.project.getPaths().shift();
-      const nodeModules = path.join(projectDirectory, './node_modules/textlint-rule-max-ten');
-
-      if (!Array.isArray(textlintConfig.rulePaths)) {
-        textlintConfig.rulePaths = [nodeModules];
-      } else {
-        textlintConfig.rulePaths.push(nodeModules);
       }
 
       const textlint = new TextLintEngine(textlintConfig);

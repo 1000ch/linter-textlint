@@ -29,6 +29,7 @@
   "dependencies": {
     "atom-linter": "^3.2.1",
     "atom-package-deps": "^2.1.2",
+    "listy": "^1.0.6",
     "textlint": "^3.3.2"
   },
   "package-deps": [
