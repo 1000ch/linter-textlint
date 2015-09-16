@@ -1,0 +1,44 @@
+{
+  "name": "linter-textlint",
+  "version": "0.0.0",
+  "private": true,
+  "description": "The plugin for Atom Linter provides an interface to textlint.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/1000ch/linter-textlint.git"
+  },
+  "engines": {
+    "atom": ">=1.0.0"
+  },
+  "keywords": [
+    "text",
+    "lint",
+    "textlint"
+  ],
+  "author": {
+    "name": "1000ch",
+    "email": "shogo.sensui@gmail.com",
+    "url": "http://github.com/1000ch"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/1000ch/linter-textlint/issues"
+  },
+  "homepage": "https://github.com/1000ch/linter-textlint#readme",
+  "dependencies": {
+    "atom-linter": "^3.2.1",
+    "atom-package-deps": "^2.1.2",
+    "textlint": "^3.3.2"
+  },
+  "package-deps": [
+    "linter"
+  ],
+  "providedServices": {
+    "linter": {
+      "versions": {
+        "1.0.0": "provideLinter"
+      }
+    }
+  }
+}
