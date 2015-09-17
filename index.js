@@ -6,8 +6,6 @@ import helper from 'atom-linter';
 import { Range } from 'atom';
 import { TextLintEngine } from 'textlint';
 
-export let config = {};
-
 const configFiles  = ['.textlintrc'];
 
 export const activate = () => {
@@ -15,10 +13,6 @@ export const activate = () => {
 };
 
 export const provideLinter = () => {
-
-  const directory = atom.project.getPaths().shift();
-  const pluginPath = path.join(directory, './node_modules/');
-
   return {
     grammarScopes: ['source.gfm', 'source.pfm', 'source.txt'],
     scope: 'file',
@@ -30,15 +24,18 @@ export const provideLinter = () => {
       let textlintConfig = {};
 
       let configFile = helper.findFile(filePath, configFiles);
-      if (configFile) {
-        textlintConfig = JSON.parse(fs.readFileSync(configFile));
+
+      // do not lint if .textlintrc does not exist
+      if (!configFile) {
+        return;
       }
 
-      const textlint = new TextLintEngine(textlintConfig);
+      const textlint = new TextLintEngine({ configFile: configFile });
+      const directory = atom.project.getPaths().shift();
+      const pluginPath = path.join(directory, './node_modules/');
 
-      textlintConfig.rules.forEach(ruleName => {
-        textlint.loadRule(ruleName, pluginPath);
-      });
+      // load textlint plugins installed in atom workspace
+      textlint.config.rules.forEach(ruleName => textlint.loadRule(ruleName, pluginPath));
 
       const items = textlint.executeOnText(text)
         .filter(result => result.messages.length)
