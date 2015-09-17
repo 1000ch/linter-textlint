@@ -1,4 +1,4 @@
-# linter-textlint
+# linter-textlint [![Dependency Status](https://david-dm.org/1000ch/linter-textlint.svg)](https://david-dm.org/1000ch/linter-textlint)
 
 The plugin for [Atom Linter](https://github.com/AtomLinter/atom-linter) provides an interface to [textlint](https://github.com/azu/textlint).
 
