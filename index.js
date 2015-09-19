@@ -31,8 +31,13 @@ export const provideLinter = () => {
       }
 
       const textlint = new TextLintEngine({ configFile: configFile });
-      const directory = atom.project.getPaths().shift();
-      const pluginPath = path.join(directory, './node_modules/');
+      const projects = atom.project.getPaths();
+
+      if (projects.length) {
+        return;
+      }
+
+      const pluginPath = path.join(projects.shift(), './node_modules/');
 
       // load textlint plugins installed in atom workspace
       textlint.config.rules.forEach(ruleName => textlint.loadRule(ruleName, pluginPath));
