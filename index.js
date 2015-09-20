@@ -33,7 +33,7 @@ export const provideLinter = () => {
       const textlint = new TextLintEngine({ configFile: configFile });
       const projects = atom.project.getPaths();
 
-      if (projects.length) {
+      if (!projects.length) {
         return;
       }
 
