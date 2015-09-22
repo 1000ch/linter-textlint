@@ -1,7 +1,6 @@
 'use babel';
 
 import fs from 'fs';
-import path from 'path';
 import { Range } from 'atom';
 import { TextLintEngine } from 'textlint';
 
@@ -31,9 +30,7 @@ export const activate = () => {
 
   // initialize textlint
   textlint = new TextLintEngine({ configFile: configFile });
-
-  // load textlint plugins installed in atom workspace
-  textlint.config.rules.forEach(ruleName => textlint.loadRule(ruleName, pluginPath));
+  textlint.setRulesBaseDirectory(pluginPath);
 };
 
 export const provideLinter = () => {
@@ -50,20 +47,22 @@ export const provideLinter = () => {
       let filePath = editor.getPath();
       let text = editor.getText();
 
-      const items = textlint.executeOnText(text)
+      const messages = [];
+      const push = Array.prototype.push;
+      const results = textlint.executeOnText(text)
         .filter(result => result.messages.length)
-        .map(result => result.messages.shift());
+        .forEach(result => push.apply(messages, result.messages));
 
-      return items.map(item => {
+      return messages.map(message => {
 
         let range = new Range(
-          [item.loc.start.line - 1, item.loc.start.column],
-          [item.loc.end.line - 1, item.loc.end.column]
+          [message.loc.start.line - 1, message.loc.start.column],
+          [message.loc.end.line - 1, message.loc.end.column]
         );
 
         return {
-          type: item.type,
-          text: item.message,
+          type: message.type,
+          text: message.message,
           filePath: filePath,
           range: range
         };
