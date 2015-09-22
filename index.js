@@ -48,7 +48,7 @@ export const provideLinter = () => {
 
       const messages = [];
       const push = Array.prototype.push;
-      const results = textlint.executeOnFiles(filePath)
+      textlint.executeOnFiles(filePath)
         .filter(result => result.messages.length)
         .forEach(result => push.apply(messages, result.messages));
 
