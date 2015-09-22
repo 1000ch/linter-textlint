@@ -45,11 +45,10 @@ export const provideLinter = () => {
       }
 
       let filePath = editor.getPath();
-      let text = editor.getText();
 
       const messages = [];
       const push = Array.prototype.push;
-      const results = textlint.executeOnText(text)
+      const results = textlint.executeOnFiles(filePath)
         .filter(result => result.messages.length)
         .forEach(result => push.apply(messages, result.messages));
 
