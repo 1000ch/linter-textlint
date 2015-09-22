@@ -29,7 +29,7 @@
   "dependencies": {
     "atom-linter": "^3.2.1",
     "atom-package-deps": "^2.1.2",
-    "textlint": "^3.4.0"
+    "textlint": "^3.5.0"
   },
   "package-deps": [
     "linter"
