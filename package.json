@@ -27,8 +27,8 @@
   },
   "homepage": "https://github.com/1000ch/linter-textlint#readme",
   "dependencies": {
-    "atom-linter": "^3.2.1",
-    "atom-package-deps": "^2.1.2",
+    "atom-linter": "^3.2.2",
+    "atom-package-deps": "^2.1.3",
     "textlint": "^3.5.0"
   },
   "package-deps": [
