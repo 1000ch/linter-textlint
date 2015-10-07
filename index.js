@@ -35,6 +35,7 @@ export const activate = () => {
 
 export const provideLinter = () => {
   return {
+    name: 'textlint',
     grammarScopes: ['source.gfm', 'source.pfm', 'source.txt'],
     scope: 'file',
     lintOnFly: true,
