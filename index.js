@@ -29,8 +29,10 @@ export const activate = () => {
   }
 
   // initialize textlint
-  textlint = new TextLintEngine({ configFile: configFile });
-  textlint.setRulesBaseDirectory(pluginPath);
+  textlint = new TextLintEngine({
+    configFile: configFile,
+    rulesBaseDirectory: pluginPath
+  });
 };
 
 export const provideLinter = () => {
@@ -54,14 +56,15 @@ export const provideLinter = () => {
         .forEach(result => push.apply(messages, result.messages));
 
       return messages.map(message => {
-
+        // line and column 1-based index
+        // https://github.com/azu/textlint/blob/master/docs/use-as-modules.md
         let range = new Range(
-          [message.loc.start.line - 1, message.loc.start.column],
-          [message.loc.end.line - 1, message.loc.end.column]
+          [message.line - 1, message.column - 1],
+          [message.line - 1, message.column - 1]
         );
 
         return {
-          type: message.type,
+          type: textlint.isErrorMessage(message) ? "Error" : "Warning",
           text: message.message,
           filePath: filePath,
           range: range
