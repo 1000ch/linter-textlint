@@ -11,7 +11,7 @@ export const activate = () => {
   // install deps
   require("atom-package-deps").install("linter-textlint");
 
-  let directories = atom.project.getDirectories();
+  let directories = atom.project.rootDirectories;
 
   if (!directories.length) {
     return;
