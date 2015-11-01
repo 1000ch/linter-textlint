@@ -4,35 +4,9 @@ import fs from 'fs';
 import { Range } from 'atom';
 import { TextLintEngine } from 'textlint';
 
-let textlint = null;
-
 export const activate = () => {
-
   // install deps
   require("atom-package-deps").install("linter-textlint");
-
-  let directories = atom.project.rootDirectories;
-
-  if (!directories.length) {
-    return;
-  }
-
-  let directory = directories.shift();
-  let configFile = directory.resolve('./.textlintrc');
-  let pluginPath = directory.resolve('./node_modules/');
-
-  // do not lint if .textlintrc does not exist
-  if (!fs.existsSync(configFile) ||
-      !fs.existsSync(pluginPath)) {
-    textlint = null;
-    return;
-  }
-
-  // initialize textlint
-  textlint = new TextLintEngine({
-    configFile: configFile,
-    rulesBaseDirectory: pluginPath
-  });
 };
 
 export const provideLinter = () => {
@@ -43,9 +17,25 @@ export const provideLinter = () => {
     lintOnFly: true,
     lint: (editor) => {
 
-      if (!textlint) {
-        return;
+      let directory = atom.project.rootDirectories[0];
+
+      if (!directory) {
+        return [];
       }
+
+      let configFile = directory.resolve('./.textlintrc');
+      let pluginPath = directory.resolve('./node_modules/');
+
+      // do not lint if .textlintrc does not exist
+      if (!fs.existsSync(configFile) ||
+          !fs.existsSync(pluginPath)) {
+        return [];
+      }
+
+      let textlint = new TextLintEngine({
+        configFile: configFile,
+        rulesBaseDirectory: pluginPath
+      });
 
       let filePath = editor.getPath();
 
