@@ -41,14 +41,14 @@ export const provideLinter = () => {
           const push = Array.prototype.push;
           const messages = [];
           results.filter(result => result.messages.length)
-              .forEach(result => push.apply(messages, result.messages));
+            .forEach(result => push.apply(messages, result.messages));
 
           const lintMessages = messages.map(message => {
             // line and column 1-based index
             // https://github.com/azu/textlint/blob/master/docs/use-as-modules.md
             let range = new Range(
-                [message.line - 1, message.column - 1],
-                [message.line - 1, message.column - 1]
+              [message.line - 1, message.column - 1],
+              [message.line - 1, message.column - 1]
             );
 
             return {
