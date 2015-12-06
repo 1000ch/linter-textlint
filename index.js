@@ -3,8 +3,9 @@
 import fs from 'fs';
 import { Range } from 'atom';
 import { TextLintEngine } from 'textlint';
+
 // User config
-export const config =  {
+export const config = {
   textlintrcPath: {
     title: '.textlintrc Path',
     description: "It will only be used when there's no config file in project",
@@ -14,13 +15,16 @@ export const config =  {
   textlintRulesDir: {
     title: 'textlint Rules Dir',
     description: `Specify a directory for textlint to load rules from.
-It will only be used when there's no config file in project
+It will only be used when there's no config file in project.
 Write the value of path to node_modules.
 `,
     type: 'string',
     default: ''
   }
 };
+
+const textlintrcPath = () => atom.config.get('linter-stylelint.usePreset');
+const textlintRulesDir = () => atom.config.get('linter-stylelint.presetConfig');
 
 export const activate = () => {
   // install deps
@@ -47,16 +51,20 @@ export const provideLinter = () => {
         if (!directory) {
           return resolve([]);
         }
+
         // local config
         let configFile = directory.resolve('./.textlintrc');
         let pluginPath = directory.resolve('./node_modules/');
+
         if (!existsConfig(configFile, pluginPath)) {
           // global config
-          let globalConfigFile = atom.config.get('linter-textlint.textlintrcPath');
-          let globalPluginPath = atom.config.get('linter-textlint.textlintRulesDir');
+          let globalConfigFile = textlintrcPath();
+          let globalPluginPath = textlintRulesDir();
+
           if (!existsConfig(globalConfigFile, globalPluginPath)) {
             return resolve([]);
           }
+
           // use global config
           configFile = globalConfigFile;
           pluginPath = globalPluginPath;
@@ -71,15 +79,16 @@ export const provideLinter = () => {
         textlint.executeOnFiles([filePath]).then(results => {
           const push = Array.prototype.push;
           const messages = [];
-          results.filter(result => result.messages.length)
-              .forEach(result => push.apply(messages, result.messages));
+          results
+            .filter(result => result.messages.length)
+            .forEach(result => push.apply(messages, result.messages));
 
           const lintMessages = messages.map(message => {
             // line and column 1-based index
             // https://github.com/azu/textlint/blob/master/docs/use-as-modules.md
             let range = new Range(
-                [message.line - 1, message.column - 1],
-                [message.line - 1, message.column - 1]
+              [message.line - 1, message.column - 1],
+              [message.line - 1, message.column - 1]
             );
 
             return {
