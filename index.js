@@ -23,8 +23,8 @@ Write the value of path to node_modules.
   }
 };
 
-const textlintrcPath = () => atom.config.get('linter-stylelint.usePreset');
-const textlintRulesDir = () => atom.config.get('linter-stylelint.presetConfig');
+const textlintrcPath = () => atom.config.get('linter-textlint.textlintrcPath');
+const textlintRulesDir = () => atom.config.get('linter-textlint.textlintRulesDir');
 
 export const activate = () => {
   // install deps
