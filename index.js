@@ -28,7 +28,7 @@ const textlintRulesDir = () => atom.config.get('linter-textlint.textlintRulesDir
 
 export const activate = () => {
   // install deps
-  require("atom-package-deps").install("linter-textlint");
+  require('atom-package-deps').install('linter-textlint');
 };
 
 function existsConfig(configFile, pluginPath) {
@@ -45,8 +45,8 @@ export const provideLinter = () => {
     scope: 'file',
     lintOnFly: true,
     lint: (editor) => {
-      return new Promise((resolve, reject) => {
-        let directory = atom.project.rootDirectories[0];
+      return new Promise(resolve => {
+        const directory = atom.project.rootDirectories[0];
 
         if (!directory) {
           return resolve([]);
@@ -58,8 +58,8 @@ export const provideLinter = () => {
 
         if (!existsConfig(configFile, pluginPath)) {
           // global config
-          let globalConfigFile = textlintrcPath();
-          let globalPluginPath = textlintRulesDir();
+          const globalConfigFile = textlintrcPath();
+          const globalPluginPath = textlintRulesDir();
 
           if (!existsConfig(globalConfigFile, globalPluginPath)) {
             return resolve([]);
@@ -70,12 +70,12 @@ export const provideLinter = () => {
           pluginPath = globalPluginPath;
         }
 
-        let textlint = new TextLintEngine({
-          configFile: configFile,
+        const textlint = new TextLintEngine({
+          configFile,
           rulesBaseDirectory: pluginPath
         });
 
-        let filePath = editor.getPath();
+        const filePath = editor.getPath();
         textlint.executeOnFiles([filePath]).then(results => {
           const push = Array.prototype.push;
           const messages = [];
@@ -86,16 +86,16 @@ export const provideLinter = () => {
           const lintMessages = messages.map(message => {
             // line and column 1-based index
             // https://github.com/azu/textlint/blob/master/docs/use-as-modules.md
-            let range = new Range(
+            const range = new Range(
               [message.line - 1, message.column - 1],
               [message.line - 1, message.column - 1]
             );
 
             return {
-              type: textlint.isErrorMessage(message) ? "Error" : "Warning",
+              type: textlint.isErrorMessage(message) ? 'Error' : 'Warning',
               text: message.message,
-              filePath: filePath,
-              range: range
+              filePath,
+              range
             };
           });
 
