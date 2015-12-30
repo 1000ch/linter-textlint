@@ -36,7 +36,9 @@
   "devDependencies": {
     "babel-eslint": "^4.1.6",
     "eslint": "^1.10.3",
-    "eslint-config-airbnb": "^2.1.1"
+    "eslint-config-airbnb": "^2.1.1",
+    "textlint-rule-preset-japanese": "^1.0.1",
+    "textlint-rule-preset-jtf-style": "^2.0.0"
   },
   "eslintConfig": {
     "rules": {
