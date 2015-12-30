@@ -3,13 +3,15 @@
   "version": "1.4.3",
   "private": true,
   "description": "A plugin for Atom Linter providing an interface to textlint.",
-  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/1000ch/linter-textlint.git"
   },
   "engines": {
     "atom": ">=1.0.0"
+  },
+  "scripts": {
+    "test": "eslint ."
   },
   "keywords": [
     "text",
@@ -30,6 +32,31 @@
     "atom-linter": "^4.0.1",
     "atom-package-deps": "^3.0.6",
     "textlint": "^5.0.3"
+  },
+  "devDependencies": {
+    "babel-eslint": "^4.1.6",
+    "eslint": "^1.10.3",
+    "eslint-config-airbnb": "^2.1.1",
+    "textlint-rule-preset-japanese": "^1.0.1",
+    "textlint-rule-preset-jtf-style": "^2.0.0"
+  },
+  "eslintConfig": {
+    "rules": {
+      "comma-dangle": [
+        2,
+        "never"
+      ],
+      "no-console": 0
+    },
+    "extends": "airbnb/base",
+    "parser": "babel-eslint",
+    "globals": {
+      "atom": true
+    },
+    "env": {
+      "es6": true,
+      "node": true
+    }
   },
   "package-deps": [
     "linter"
