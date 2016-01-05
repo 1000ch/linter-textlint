@@ -29,15 +29,15 @@
   },
   "homepage": "https://github.com/1000ch/linter-textlint#readme",
   "dependencies": {
-    "atom-linter": "^4.2.0",
-    "atom-package-deps": "^3.0.6",
-    "textlint": "^5.1.2"
+    "atom-linter": "^4.3.0",
+    "atom-package-deps": "^3.0.7",
+    "textlint": "^5.2.0"
   },
   "devDependencies": {
     "babel-eslint": "^4.1.6",
     "eslint": "^1.10.3",
-    "eslint-config-airbnb": "^2.1.1",
-    "textlint-rule-preset-japanese": "^1.0.1",
+    "eslint-config-airbnb": "^3.0.0",
+    "textlint-rule-preset-japanese": "^1.0.2",
     "textlint-rule-preset-jtf-style": "^2.0.0"
   },
   "eslintConfig": {
