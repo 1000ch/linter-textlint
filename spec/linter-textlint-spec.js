@@ -13,8 +13,10 @@ describe('The textlint provider for Linter', () => {
         atom.workspace.open(path.join(__dirname, 'fixtures', 'good.md'))
       );
     });
-    atom.config.set('linter-textlint.textlintrcPath', path.join(__dirname, 'fixtures', '.textlintrc'));
-    atom.config.set('linter-textlint.textlintRulesDir', path.join(__dirname, '..', 'node_modules'));
+    const textlintrc = path.join(__dirname, 'fixtures', '.textlintrc');
+    const textlintRulesDir = path.join(__dirname, '..', 'node_modules');
+    atom.config.set('linter-textlint.textlintrcPath', textlintrc);
+    atom.config.set('linter-textlint.textlintRulesDir', textlintRulesDir);
   });
 
   describe('checks bad.md and', () => {

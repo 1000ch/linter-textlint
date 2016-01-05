@@ -10,16 +10,15 @@ export const config = {
     title: '.textlintrc Path',
     description: "It will only be used when there's no config file in project",
     type: 'string',
-    default: ''
+    'default': ''
   },
   textlintRulesDir: {
     title: 'textlint Rules Dir',
     description: `Specify a directory for textlint to load rules from.
 It will only be used when there's no config file in project.
-Write the value of path to node_modules.
-`,
+Write the value of path to node_modules.`,
     type: 'string',
-    default: ''
+    'default': ''
   }
 };
 
