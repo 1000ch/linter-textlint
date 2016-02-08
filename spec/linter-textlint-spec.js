@@ -22,24 +22,24 @@ describe('The textlint provider for Linter', () => {
   describe('checks bad.md and', () => {
     let editor = null;
     beforeEach(() => {
-      waitsForPromise(() => {
-        return atom.workspace.open(path.join(__dirname, 'fixtures', 'bad.md')).then(openEditor => {
-          editor = openEditor;
-        });
-      });
+      waitsForPromise(() =>
+        atom.workspace.open(path.join(__dirname, 'fixtures', 'bad.md')).then(openEditor =>
+          editor = openEditor
+        )
+      );
     });
 
     it('finds at least one message', () => {
-      waitsForPromise(() => {
-        return lint(editor).then(messages => {
-          expect(messages.length).toBeGreaterThan(0);
-        });
-      });
+      waitsForPromise(() =>
+        lint(editor).then(messages =>
+          expect(messages.length).toBeGreaterThan(0)
+        )
+      );
     });
 
     it('verifies the first message', () => {
-      waitsForPromise(() => {
-        return lint(editor).then(messages => {
+      waitsForPromise(() =>
+        lint(editor).then(messages => {
           expect(messages[0].type).toEqual('Error');
           expect(messages[0].text).toEqual('一文に二回以上利用されている助詞 "て" がみつかりました。');
           expect(messages[0].filePath).toMatch(/.+bad\.md$/);
@@ -47,18 +47,18 @@ describe('The textlint provider for Linter', () => {
             start: { row: 0, column: 10 },
             end: { row: 0, column: 10 }
           });
-        });
-      });
+        })
+      );
     });
   });
 
   it('finds nothing wrong with a valid file', () => {
-    waitsForPromise(() => {
-      return atom.workspace.open(path.join(__dirname, 'fixtures', 'good.md')).then(editor => {
-        return lint(editor).then(messages => {
-          expect(messages.length).toEqual(0);
-        });
-      });
-    });
+    waitsForPromise(() =>
+      atom.workspace.open(path.join(__dirname, 'fixtures', 'good.md')).then(editor =>
+        lint(editor).then(messages =>
+          expect(messages.length).toEqual(0)
+        )
+      )
+    );
   });
 });
