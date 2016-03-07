@@ -23,9 +23,9 @@ describe('The textlint provider for Linter', () => {
     let editor = null;
     beforeEach(() => {
       waitsForPromise(() =>
-        atom.workspace.open(path.join(__dirname, 'fixtures', 'bad.md')).then(openEditor =>
-          editor = openEditor
-        )
+        atom.workspace.open(path.join(__dirname, 'fixtures', 'bad.md')).then(openEditor => {
+          editor = openEditor;
+        })
       );
     });
 
