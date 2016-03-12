@@ -2,63 +2,58 @@
 
 import * as path from 'path';
 
+const bad = path.join(__dirname, 'fixtures', 'bad.md');
+const good = path.join(__dirname, 'fixtures', 'good.md');
+const textlintrcPath = path.join(__dirname, 'fixtures', '.textlintrc');
+const textlintRulesDir = path.join(__dirname, '..', 'node_modules');
+
 describe('The textlint provider for Linter', () => {
   const lint = require(path.join('..', 'lib', 'index.js')).provideLinter().lint;
 
   beforeEach(() => {
     atom.workspace.destroyActivePaneItem();
-    waitsForPromise(() => {
-      atom.packages.activatePackage('linter-textlint');
-      return atom.packages.activatePackage('language-gfm').then(() =>
-        atom.workspace.open(path.join(__dirname, 'fixtures', 'good.md'))
-      );
-    });
-    const textlintrc = path.join(__dirname, 'fixtures', '.textlintrc');
-    const textlintRulesDir = path.join(__dirname, '..', 'node_modules');
-    atom.config.set('linter-textlint.textlintrcPath', textlintrc);
+    atom.config.set('linter-textlint.textlintrcPath', textlintrcPath);
     atom.config.set('linter-textlint.textlintRulesDir', textlintRulesDir);
+
+    waitsForPromise(() =>
+      Promise.all([
+        atom.packages.activatePackage('linter-textlint'),
+        atom.packages.activatePackage('language-gfm')
+      ])
+    );
   });
 
   describe('checks bad.md and', () => {
-    let editor = null;
-    beforeEach(() => {
-      waitsForPromise(() =>
-        atom.workspace.open(path.join(__dirname, 'fixtures', 'bad.md')).then(openEditor => {
-          editor = openEditor;
-        })
-      );
-    });
-
     it('finds at least one message', () => {
       waitsForPromise(() =>
-        lint(editor).then(messages =>
-          expect(messages.length).toBeGreaterThan(0)
-        )
+        atom.workspace.open(bad).then(editor => lint(editor)).then(messages => {
+          expect(messages.length).toBeGreaterThan(0);
+        })
       );
     });
 
     it('verifies the first message', () => {
       waitsForPromise(() =>
-        lint(editor).then(messages => {
+        atom.workspace.open(bad).then(editor => lint(editor)).then(messages => {
           expect(messages[0].type).toEqual('Error');
-          expect(messages[0].text).toEqual('一文に二回以上利用されている助詞 "て" がみつかりました。');
+          expect(messages[0].text).toEqual('Java Script => JavaScript');
           expect(messages[0].filePath).toMatch(/.+bad\.md$/);
           expect(messages[0].range).toEqual({
-            start: { row: 0, column: 10 },
-            end: { row: 0, column: 10 }
+            start: { row: 2, column: 4 },
+            end: { row: 2, column: 4 }
           });
         })
       );
     });
   });
 
-  it('finds nothing wrong with a valid file', () => {
-    waitsForPromise(() =>
-      atom.workspace.open(path.join(__dirname, 'fixtures', 'good.md')).then(editor =>
-        lint(editor).then(messages =>
+  describe('checks bad.md and', () => {
+    it('finds nothing wrong with a valid file', () => {
+      waitsForPromise(() =>
+        atom.workspace.open(good).then(editor => lint(editor)).then(messages =>
           expect(messages.length).toEqual(0)
         )
-      )
-    );
+      );
+    });
   });
 });

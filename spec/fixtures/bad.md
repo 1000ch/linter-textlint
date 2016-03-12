@@ -1,1 +1,3 @@
-適当な文章を書いてみてlint結果がどうなるかをみてみましょう。
+# README
+
+Say Java Script!
