@@ -38,10 +38,10 @@ describe('The textlint provider for Linter', () => {
           expect(messages[0].type).toEqual('Error');
           expect(messages[0].text).toEqual('Java Script => JavaScript');
           expect(messages[0].filePath).toMatch(/.+bad\.md$/);
-          expect(messages[0].range).toEqual({
-            start: { row: 2, column: 4 },
-            end: { row: 2, column: 4 }
-          });
+          expect(messages[0].range).toEqual([
+            [2, 4],
+            [2, 16]
+          ]);
         })
       );
     });
