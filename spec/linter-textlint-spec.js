@@ -37,12 +37,12 @@ describe('The textlint provider for Linter', () => {
       waitsForPromise(() =>
         atom.workspace.open(bad).then(editor => lint(editor)).then(messages => {
           expect(messages[0].type).toEqual('Error');
-          expect(messages[0].text).toEqual('Java Script => JavaScript');
+          expect(messages[0].text).toEqual('HTML Import => HTML Imports');
           expect(messages[0].html).not.toBeDefined();
           expect(messages[0].filePath).toMatch(/.+bad\.md$/);
           expect(messages[0].range).toEqual([
-            [2, 4],
-            [2, 16]
+            [2, 0],
+            [2, 24]
           ]);
         })
       );
@@ -55,7 +55,7 @@ describe('The textlint provider for Linter', () => {
         atom.workspace.open(bad).then(editor => lint(editor)).then(messages => {
           expect(messages[0].text).not.toBeDefined();
           // eslint-disable-next-line max-len
-          expect(messages[0].html).toEqual('<span class="badge badge-flexible textlint">spellcheck-tech-word</span> Java Script =&gt; JavaScript');
+          expect(messages[0].html).toEqual('<span class="badge badge-flexible textlint">spellcheck-tech-word</span> HTML Import =&gt; HTML Imports');
         })
       );
     });

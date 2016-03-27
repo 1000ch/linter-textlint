@@ -1,3 +1,4 @@
-# README
+# TEST file
 
-Say Java Script!
+HTML Import is bad word.
+HTML Imports is correct.
