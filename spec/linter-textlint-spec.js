@@ -14,6 +14,7 @@ describe('The textlint provider for Linter', () => {
     atom.workspace.destroyActivePaneItem();
     atom.config.set('linter-textlint.textlintrcPath', textlintrcPath);
     atom.config.set('linter-textlint.textlintRulesDir', textlintRulesDir);
+    atom.config.set('linter-textlint.showRuleIdInMessage', false);
 
     waitsForPromise(() =>
       Promise.all([
@@ -37,11 +38,24 @@ describe('The textlint provider for Linter', () => {
         atom.workspace.open(bad).then(editor => lint(editor)).then(messages => {
           expect(messages[0].type).toEqual('Error');
           expect(messages[0].text).toEqual('Java Script => JavaScript');
+          expect(messages[0].html).not.toBeDefined();
           expect(messages[0].filePath).toMatch(/.+bad\.md$/);
           expect(messages[0].range).toEqual([
             [2, 4],
             [2, 16]
           ]);
+        })
+      );
+    });
+
+    it('verifies the first message contains a rule ID', () => {
+      atom.config.set('linter-textlint.showRuleIdInMessage', true);
+
+      waitsForPromise(() =>
+        atom.workspace.open(bad).then(editor => lint(editor)).then(messages => {
+          expect(messages[0].text).not.toBeDefined();
+          // eslint-disable-next-line max-len
+          expect(messages[0].html).toEqual('<span class="badge badge-flexible textlint">spellcheck-tech-word</span> Java Script =&gt; JavaScript');
         })
       );
     });
