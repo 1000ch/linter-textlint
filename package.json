@@ -36,8 +36,8 @@
     "textlint": "^6.0.1"
   },
   "devDependencies": {
-    "eslint": "^2.4.0",
-    "eslint-config-airbnb": "^6.1.0",
+    "eslint": "^2.5.1",
+    "eslint-config-airbnb": "^6.2.0",
     "textlint-rule-spellcheck-tech-word": "^4.2.0"
   },
   "eslintConfig": {
