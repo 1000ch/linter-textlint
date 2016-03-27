@@ -38,6 +38,7 @@
   "devDependencies": {
     "eslint": "^2.5.1",
     "eslint-config-airbnb": "^6.2.0",
+    "eslint-plugin-react": "^4.2.3",
     "textlint-rule-spellcheck-tech-word": "^4.2.0"
   },
   "eslintConfig": {
