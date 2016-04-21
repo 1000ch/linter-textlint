@@ -36,10 +36,9 @@
     "textlint": "^6.0.1"
   },
   "devDependencies": {
-    "eslint": "^2.5.1",
-    "eslint-config-airbnb": "^7.0.0",
-    "eslint-plugin-jsx-a11y": "^0.6.2",
-    "eslint-plugin-react": "^4.3.0",
+    "eslint": "^2.8.0",
+    "eslint-config-airbnb-base": "^1.0.0",
+    "eslint-plugin-import": "^1.5.0",
     "textlint-rule-spellcheck-tech-word": "^5.0.0"
   },
   "eslintConfig": {
@@ -48,9 +47,17 @@
         2,
         "never"
       ],
-      "no-console": 0
+      "global-require": 0,
+      "import/no-unresolved": [
+        2,
+        {
+          "ignore": [
+            "atom"
+          ]
+        }
+      ]
     },
-    "extends": "airbnb/base",
+    "extends": "airbnb-base",
     "globals": {
       "atom": true
     },
