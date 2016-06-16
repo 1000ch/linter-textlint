@@ -1,10 +1,15 @@
-# linter-textlint [![Dependency Status](https://david-dm.org/1000ch/linter-textlint.svg)](https://david-dm.org/1000ch/linter-textlint)
+# linter-textlint
+
+[![Dependency Status](https://david-dm.org/1000ch/linter-textlint.svg)](https://david-dm.org/1000ch/linter-textlint)
+[![Build Status](https://travis-ci.org/1000ch/linter-textlint.svg?branch=master)](https://travis-ci.org/1000ch/linter-textlint)
+[![Build Status](https://ci.appveyor.com/api/projects/status/mhhj7frwj1axt6tw?svg=true)](https://ci.appveyor.com/project/1000ch/linter-textlint)
+[![Build Status](https://circleci.com/gh/1000ch/linter-textlint/tree/master.svg?style=shield&circle-token=948bf903ddab915de586ad0afe69cee03dcf3ca1)](https://circleci.com/gh/1000ch/linter-textlint)
 
 A plugin for [Atom Linter](https://github.com/AtomLinter/atom-linter) providing an interface to [textlint](https://github.com/textlint/textlint).
 
 ## Installation
 
-```sh
+```bash
 $ apm install linter-textlint
 ```
 
