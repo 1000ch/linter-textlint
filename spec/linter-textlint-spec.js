@@ -42,7 +42,7 @@ describe('The textlint provider for Linter', () => {
           expect(messages[0].filePath).toMatch(/.+bad\.md$/);
           expect(messages[0].range).toEqual([
             [2, 0],
-            [2, 24]
+            [2, 4]
           ]);
         })
       );
