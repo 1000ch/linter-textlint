@@ -34,13 +34,13 @@
     "atom-linter": "^6.0.0",
     "atom-package-deps": "^4.0.1",
     "escape-html": "^1.0.3",
-    "textlint": "^7.0.1"
+    "textlint": "^7.0.1",
+    "textlint-rule-spellcheck-tech-word": "^5.0.0"
   },
   "devDependencies": {
     "eslint": "^3.0.1",
     "eslint-config-airbnb-base": "^4.0.0",
-    "eslint-plugin-import": "^1.10.2",
-    "textlint-rule-spellcheck-tech-word": "^5.0.0"
+    "eslint-plugin-import": "^1.10.2"
   },
   "eslintConfig": {
     "rules": {

@@ -11,7 +11,6 @@ deploy: off
 install:
   # Install Node.js to run any configured linters
   - ps: Install-Product node 6
-  - npm install textlint-rule-spellcheck-tech-word
 
 build_script:
   - ps: iex ((new-object net.webclient).DownloadString('https://github.com/Arcanemagus/ci/raw/atomlinter/build-package.ps1'))

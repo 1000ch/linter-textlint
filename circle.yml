@@ -4,9 +4,6 @@ dependencies:
     - sudo dpkg --install atom-amd64.deb || true
     - sudo apt-get update
     - sudo apt-get -f install
-    # Pre-install the required language file as package activation doesn't wait
-    # for the installation to complete.
-    - apm install language-gfm
 
 test:
   override:
@@ -15,7 +12,6 @@ test:
     - rm -Rf node_modules
     - atom -v
     - apm -v
-    - npm install textlint-rule-spellcheck-tech-word
     - apm install --production
     - apm test
 
