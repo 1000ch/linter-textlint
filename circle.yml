@@ -1,17 +1,23 @@
 dependencies:
-  pre:
-    # Force updating wget due to the current containers being too out of date
-    - sudo apt-get update
-    - sudo apt-get install wget
   override:
-    - wget -O atom-amd64.deb https://atom.io/download/deb
-    # - sudo apt-get update # Cut out until wget is fixed on the containers
+    - curl -L https://atom.io/download/deb -o atom-amd64.deb
     - sudo dpkg --install atom-amd64.deb || true
+    - sudo apt-get update
     - sudo apt-get -f install
-    - apm install
+    # Pre-install the required language file as package activation doesn't wait
+    # for the installation to complete.
+    - apm install language-gfm
+
 test:
   override:
+    - npm install
+    - npm run lint
+    - rm -Rf node_modules
     - atom -v
     - apm -v
-    - npm test
+    - apm install --production
     - apm test
+
+machine:
+  node:
+    version: 6
