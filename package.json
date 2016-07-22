@@ -12,7 +12,8 @@
     "atom": ">=1.0.0"
   },
   "scripts": {
-    "test": "eslint ."
+    "test": "apm test",
+    "lint": "eslint ."
   },
   "keywords": [
     "text",

@@ -15,6 +15,7 @@ test:
     - rm -Rf node_modules
     - atom -v
     - apm -v
+    - npm install textlint-rule-spellcheck-tech-word
     - apm install --production
     - apm test
 
