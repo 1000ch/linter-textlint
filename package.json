@@ -31,7 +31,7 @@
   },
   "homepage": "https://github.com/1000ch/linter-textlint#readme",
   "dependencies": {
-    "atom-linter": "^6.0.0",
+    "atom-linter": "^8.0.0",
     "atom-package-deps": "^4.3.1",
     "escape-html": "^1.0.3",
     "textlint": "^7.1.0",
@@ -45,12 +45,13 @@
   "eslintConfig": {
     "rules": {
       "comma-dangle": [
-        2,
+        "error",
         "never"
       ],
-      "global-require": 0,
+      "global-require": "off",
+      "import/no-extraneous-dependencies": "off",
       "import/no-unresolved": [
-        2,
+        "error",
         {
           "ignore": [
             "atom"
@@ -64,7 +65,8 @@
     },
     "env": {
       "es6": true,
-      "node": true
+      "node": true,
+      "browser": true
     }
   },
   "package-deps": [
