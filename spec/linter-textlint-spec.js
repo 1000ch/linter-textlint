@@ -27,7 +27,7 @@ describe('The textlint provider for Linter', () => {
   describe('checks bad.md and', () => {
     it('finds at least one message', () => {
       waitsForPromise(() =>
-        atom.workspace.open(bad).then(editor => lint(editor)).then(messages => {
+        atom.workspace.open(bad).then(editor => lint(editor)).then((messages) => {
           expect(messages.length).toBeGreaterThan(0);
         })
       );
@@ -35,7 +35,7 @@ describe('The textlint provider for Linter', () => {
 
     it('verifies the first message', () => {
       waitsForPromise(() =>
-        atom.workspace.open(bad).then(editor => lint(editor)).then(messages => {
+        atom.workspace.open(bad).then(editor => lint(editor)).then((messages) => {
           expect(messages[0].type).toEqual('Error');
           expect(messages[0].text).toEqual('HTML Import => HTML Imports');
           expect(messages[0].html).not.toBeDefined();
@@ -52,7 +52,7 @@ describe('The textlint provider for Linter', () => {
       atom.config.set('linter-textlint.showRuleIdInMessage', true);
 
       waitsForPromise(() =>
-        atom.workspace.open(bad).then(editor => lint(editor)).then(messages => {
+        atom.workspace.open(bad).then(editor => lint(editor)).then((messages) => {
           expect(messages[0].text).not.toBeDefined();
           // eslint-disable-next-line max-len
           expect(messages[0].html).toEqual('<span class="badge badge-flexible textlint">spellcheck-tech-word</span> HTML Import =&gt; HTML Imports');

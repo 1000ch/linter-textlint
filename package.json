@@ -38,8 +38,8 @@
     "textlint-rule-spellcheck-tech-word": "^5.0.0"
   },
   "devDependencies": {
-    "eslint": "^3.4.0",
-    "eslint-config-airbnb-base": "^5.0.3",
+    "eslint": "^3.5.0",
+    "eslint-config-airbnb-base": "^7.1.0",
     "eslint-plugin-import": "^1.14.0"
   },
   "eslintConfig": {
