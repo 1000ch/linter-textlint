@@ -8,7 +8,7 @@ const textlintrcPath = path.join(__dirname, 'fixtures', '.textlintrc');
 const textlintRulesDir = path.join(__dirname, '..', 'node_modules');
 
 describe('The textlint provider for Linter', () => {
-  const lint = require(path.join('..', 'lib', 'index.js')).provideLinter().lint;
+  const lint = require('../lib').provideLinter().lint;
 
   beforeEach(() => {
     atom.workspace.destroyActivePaneItem();
