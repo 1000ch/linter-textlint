@@ -55,7 +55,7 @@ describe('The textlint provider for Linter', () => {
         atom.workspace.open(bad).then(editor => lint(editor)).then((messages) => {
           expect(messages[0].text).not.toBeDefined();
           // eslint-disable-next-line max-len
-          expect(messages[0].html).toEqual('<span class="badge badge-flexible textlint">spellcheck-tech-word</span> HTML Import =&gt; HTML Imports');
+          expect(messages[0].html).toEqual('<span class="badge badge-flexible">spellcheck-tech-word</span> HTML Import =&gt; HTML Imports');
         })
       );
     });
