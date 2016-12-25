@@ -54,6 +54,7 @@
     "atom-package-deps": "^4.3.1",
     "escape-html": "^1.0.3",
     "textlint": "^7.1.0",
+    "textlint-rule-documentation": "^0.1.0",
     "textlint-rule-spellcheck-tech-word": "^5.0.0"
   },
   "devDependencies": {
