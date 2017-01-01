@@ -43,4 +43,4 @@ Open any file(The workspace has not config file) with Atom Editor.
 
 ## License
 
-MIT: http://1000ch.mit-license.org
+[MIT](https://1000ch.mit-license.org) © [Shogo Sensui](https://github.com/1000ch)

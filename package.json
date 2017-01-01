@@ -4,12 +4,9 @@
   "private": true,
   "description": "A plugin for Atom Linter providing an interface to textlint.",
   "main": "lib/index.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/1000ch/linter-textlint.git"
-  },
+  "repository": "1000ch/linter-textlint",
   "engines": {
-    "atom": ">=1.0.0"
+    "atom": ">=1.10.0 <2.0.0"
   },
   "scripts": {
     "test": "apm test",
@@ -23,7 +20,7 @@
   "author": {
     "name": "1000ch",
     "email": "shogo.sensui@gmail.com",
-    "url": "http://github.com/1000ch"
+    "url": "https://github.com/1000ch"
   },
   "license": "MIT",
   "bugs": {
