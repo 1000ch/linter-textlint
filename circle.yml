@@ -10,4 +10,4 @@ dependencies:
 
 machine:
   environment:
-    APM_TEST_PACKAGES: "language-gfm"
+    APM_TEST_PACKAGES: "language-review"

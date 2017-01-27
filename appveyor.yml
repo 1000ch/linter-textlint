@@ -1,6 +1,6 @@
 ### Project specific config ###
 environment:
-  APM_TEST_PACKAGES: language-gfm
+  APM_TEST_PACKAGES: language-review
 
   matrix:
   - ATOM_CHANNEL: stable
