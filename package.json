@@ -55,7 +55,7 @@
     "textlint-rule-spellcheck-tech-word": "^5.0.0"
   },
   "devDependencies": {
-    "eslint": "^3.12.2",
+    "eslint": "^3.16.0",
     "eslint-config-airbnb-base": "^11.0.0",
     "eslint-plugin-import": "^2.2.0",
     "textlint-plugin-asciidoc-loose": "^1.0.1",
