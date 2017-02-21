@@ -4,6 +4,7 @@ import * as path from 'path';
 
 const bad = path.join(__dirname, 'fixtures', 'bad.md');
 const good = path.join(__dirname, 'fixtures', 'good.md');
+const review = path.join(__dirname, 'fixtures', 'bad.re');
 const textlintrcPath = path.join(__dirname, 'fixtures', '.textlintrc');
 const textlintRulesDir = path.join(__dirname, '..', 'node_modules');
 
@@ -55,7 +56,17 @@ describe('The textlint provider for Linter', () => {
         atom.workspace.open(bad).then(editor => lint(editor)).then((messages) => {
           expect(messages[0].text).not.toBeDefined();
           // eslint-disable-next-line max-len
-          expect(messages[0].html).toEqual('<span class="badge badge-flexible">spellcheck-tech-word</span> HTML Import =&gt; HTML Imports');
+          expect(messages[0].html).toEqual('<span class="badge badge-flexible"><a href=https://github.com/azu/textlint-rule-spellcheck-tech-word>spellcheck-tech-word</a></span> HTML Import =&gt; HTML Imports');
+        })
+      );
+    });
+  });
+
+  describe('checks bad.re and', () => {
+    it('finds at least one message', () => {
+      waitsForPromise(() =>
+        atom.workspace.open(review).then(editor => lint(editor)).then((messages) => {
+          expect(messages.length).toBeGreaterThan(0);
         })
       );
     });
