@@ -3,6 +3,7 @@ test:
     - curl -s -O https://raw.githubusercontent.com/atom/ci/master/build-package.sh
     - chmod u+x build-package.sh
     - ./build-package.sh
+    - apm rebuild
 
 dependencies:
   override:
@@ -10,4 +11,4 @@ dependencies:
 
 machine:
   environment:
-    APM_TEST_PACKAGES: "language-review"
+    APM_TEST_PACKAGES: "language-review language-asciidoc"
