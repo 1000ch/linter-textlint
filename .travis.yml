@@ -9,9 +9,6 @@ matrix:
     - os: linux
       env: ATOM_CHANNEL=beta
 
-    - os: osx
-      env: ATOM_CHANNEL=stable
-
 env:
   global:
     # Pre-install the required language file as package activation doesn't wait
