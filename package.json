@@ -10,6 +10,7 @@
   },
   "scripts": {
     "test": "apm test",
+    "pretest": "npm run lint",
     "lint": "eslint ."
   },
   "keywords": [
@@ -94,7 +95,7 @@
   "providedServices": {
     "linter": {
       "versions": {
-        "1.0.0": "provideLinter"
+        "2.0.0": "provideLinter"
       }
     }
   }
