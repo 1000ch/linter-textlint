@@ -40,11 +40,6 @@
       "description": "Specify a directory for textlint to load rules from. It will only be used when there's no config file in project. Write the value of path to node_modules.",
       "type": "string",
       "default": ""
-    },
-    "showRuleIdInMessage": {
-      "title": "Show Rule ID in Messages",
-      "type": "boolean",
-      "default": true
     }
   },
   "dependencies": {
