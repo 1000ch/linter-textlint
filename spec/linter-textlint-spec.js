@@ -41,7 +41,7 @@ describe('The textlint provider for Linter', () => {
         atom.workspace.open(markdown)
           .then(editor => lint(editor))
           .then((messages) => {
-            expect(messages[0].severity).toEqual('Error');
+            expect(messages[0].severity).toEqual('error');
             expect(messages[0].excerpt).toEqual('HTML Import => HTML Imports');
             expect(messages[0].location.file).toMatch(/.+bad\.md$/);
             expect(messages[0].location.position).toEqual([
