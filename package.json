@@ -44,16 +44,16 @@
   },
   "dependencies": {
     "atom-linter": "^10.0.0",
-    "atom-package-deps": "^4.4.1",
+    "atom-package-deps": "^4.6.0",
     "escape-html": "^1.0.3",
-    "textlint": "^9.0.0",
+    "textlint": "^9.1.0",
     "textlint-rule-documentation": "^0.2.0",
     "textlint-rule-spellcheck-tech-word": "^5.0.0"
   },
   "devDependencies": {
-    "eslint": "^4.7.0",
-    "eslint-config-airbnb-base": "^12.0.0",
-    "eslint-plugin-import": "^2.2.0",
+    "eslint": "^4.12.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0",
     "textlint-plugin-asciidoc-loose": "^1.0.1",
     "textlint-plugin-review": "^0.3.3"
   },
