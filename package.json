@@ -4,7 +4,10 @@
   "private": true,
   "description": "A plugin for Atom Linter providing an interface to textlint.",
   "main": "lib/index.js",
-  "repository": "1000ch/linter-textlint",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:1000ch/linter-textlint.git"
+  },
   "engines": {
     "atom": ">=1.10.0 <2.0.0"
   },
