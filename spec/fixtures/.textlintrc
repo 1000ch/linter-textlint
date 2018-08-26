@@ -3,7 +3,6 @@
     "spellcheck-tech-word": true
   },
   "plugins": [
-    "review",
-    "asciidoc-loose"
+    "review"
   ]
 }
