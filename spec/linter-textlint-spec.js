@@ -5,7 +5,6 @@ import * as path from 'path';
 const good = path.join(__dirname, 'fixtures', 'good.md');
 const markdown = path.join(__dirname, 'fixtures', 'bad.md');
 const review = path.join(__dirname, 'fixtures', 'bad.re');
-const asciidoc = path.join(__dirname, 'fixtures', 'bad.asciidoc');
 const textlintrcPath = path.join(__dirname, 'fixtures', '.textlintrc');
 const textlintRulesDir = path.join(__dirname, '..', 'node_modules');
 
@@ -19,7 +18,6 @@ describe('The textlint provider for Linter', () => {
 
     const activation = Promise.all([
       atom.packages.activatePackage('language-review'),
-      atom.packages.activatePackage('language-asciidoc'),
       atom.packages.activatePackage('linter-textlint')
     ]);
 
@@ -53,16 +51,6 @@ describe('The textlint provider for Linter', () => {
   describe('checks bad.re and', () => {
     it('finds at least one message', () => {
       waitsForPromise(() => atom.workspace.open(review)
-        .then(editor => lint(editor))
-        .then((messages) => {
-          expect(messages.length).toBeGreaterThan(0);
-        }));
-    });
-  });
-
-  describe('checks bad.asciidoc and', () => {
-    it('finds at least one message', () => {
-      waitsForPromise(() => atom.workspace.open(asciidoc)
         .then(editor => lint(editor))
         .then((messages) => {
           expect(messages.length).toBeGreaterThan(0);

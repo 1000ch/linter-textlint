@@ -2,7 +2,7 @@ version: 2
 
 defaults: &defaults
   environment:
-    APM_TEST_PACKAGES: "language-review language-asciidoc"
+    APM_TEST_PACKAGES: "language-review"
   working_directory: /tmp/project
   docker:
     - image: arcanemagus/atom-docker-ci:stable
