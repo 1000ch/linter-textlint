@@ -3,6 +3,7 @@
     "spellcheck-tech-word": true
   },
   "plugins": [
-    "review"
+    "review",
+    "latex2e"
   ]
 }

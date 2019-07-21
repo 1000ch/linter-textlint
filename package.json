@@ -57,6 +57,7 @@
     "eslint": "^6.1.0",
     "eslint-config-airbnb-base": "^13.2.0",
     "eslint-plugin-import": "^2.18.2",
+    "textlint-plugin-latex2e": "^0.2.2",
     "textlint-plugin-review": "^0.3.3"
   },
   "package-deps": [
