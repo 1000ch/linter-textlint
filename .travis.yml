@@ -6,14 +6,11 @@ matrix:
     - os: linux
       env: ATOM_CHANNEL=stable
 
-    - os: linux
-      env: ATOM_CHANNEL=beta
-
 env:
   global:
     # Pre-install the required language file as package activation doesn't wait
     # for the installation to complete.
-    - APM_TEST_PACKAGES="language-review"
+    - APM_TEST_PACKAGES="language-review language-latex"
 
 ### Generic setup follows ###
 script:

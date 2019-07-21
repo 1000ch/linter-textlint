@@ -1,10 +1,9 @@
 ### Project specific config ###
 environment:
-  APM_TEST_PACKAGES: language-review
+  APM_TEST_PACKAGES: language-review language-latex
 
   matrix:
   - ATOM_CHANNEL: stable
-  - ATOM_CHANNEL: beta
 
 ### Generic setup follows ###
 build_script:
