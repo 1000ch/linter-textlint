@@ -1,0 +1,27 @@
+{
+  "rules": {
+    "comma-dangle": [
+      "error",
+      "never"
+    ],
+    "global-require": "off",
+    "import/no-extraneous-dependencies": "off",
+    "import/no-unresolved": [
+      "error",
+      {
+        "ignore": [
+          "atom"
+        ]
+      }
+    ]
+  },
+  "extends": "airbnb-base",
+  "globals": {
+    "atom": true
+  },
+  "env": {
+    "es6": true,
+    "node": true,
+    "browser": true
+  }
+}
