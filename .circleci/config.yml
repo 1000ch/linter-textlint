@@ -2,7 +2,7 @@ version: 2
 
 defaults: &defaults
   environment:
-    APM_TEST_PACKAGES: "language-review"
+    APM_TEST_PACKAGES: "language-review language-latex"
   working_directory: /tmp/project
   docker:
     - image: arcanemagus/atom-docker-ci:stable
