@@ -27,7 +27,7 @@ describe('The textlint provider for Linter', () => {
   describe('checks bad.md and', () => {
     it('finds at least one message', () => {
       waitsForPromise(() => atom.workspace.open(markdown)
-        .then(editor => lint(editor))
+        .then((editor) => lint(editor))
         .then((messages) => {
           expect(messages.length).toBeGreaterThan(0);
         }));
@@ -35,7 +35,7 @@ describe('The textlint provider for Linter', () => {
 
     it('verifies the first message', () => {
       waitsForPromise(() => atom.workspace.open(markdown)
-        .then(editor => lint(editor))
+        .then((editor) => lint(editor))
         .then((messages) => {
           expect(messages[0].severity).toEqual('error');
           expect(messages[0].excerpt).toEqual('HTML Import => HTML Imports');
@@ -51,7 +51,7 @@ describe('The textlint provider for Linter', () => {
   describe('checks bad.re and', () => {
     it('finds at least one message', () => {
       waitsForPromise(() => atom.workspace.open(review)
-        .then(editor => lint(editor))
+        .then((editor) => lint(editor))
         .then((messages) => {
           expect(messages.length).toBeGreaterThan(0);
         }));
@@ -61,7 +61,7 @@ describe('The textlint provider for Linter', () => {
   describe('checks good.md and', () => {
     it('finds nothing wrong with a valid file', () => {
       waitsForPromise(() => atom.workspace.open(good)
-        .then(editor => lint(editor))
+        .then((editor) => lint(editor))
         .then((messages) => {
           expect(messages.length).toEqual(0);
         }));
