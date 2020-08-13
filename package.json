@@ -57,7 +57,7 @@
     "eslint": "^7.6.0",
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-plugin-import": "^2.22.0",
-    "textlint-plugin-review": "^0.3.3"
+    "textlint-plugin-review": "^0.4.1"
   },
   "package-deps": [
     "linter"
