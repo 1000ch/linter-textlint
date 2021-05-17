@@ -56,7 +56,7 @@
   "devDependencies": {
     "eslint": "^7.18.0",
     "eslint-config-airbnb-base": "^14.2.0",
-    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-import": "^2.23.2",
     "textlint-plugin-review": "^0.4.1"
   },
   "package-deps": [
